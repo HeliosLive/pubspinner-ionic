@@ -31,10 +31,12 @@ export class EntryPage {
   ionViewDidLoad() { 
     console.log("view loaded ! ");
     this.getServices();
+    this.getMain();
   }
   
   services:ServiceList;
   servicesList:ServiceList[]=[];
+  mainList:ServiceList[]=[];
 
  
   getServices(){  
@@ -45,6 +47,18 @@ export class EntryPage {
       this.services.ImageUrl = element.ImageUrl;
       this.services.Count = element.Count; 
       this.servicesList.push(this.services);
+      console.log(element);
+    }); 
+  }
+
+  getMain(){
+    MockServices.services.main.forEach(element => {
+      this.services = new ServiceList(); 
+      this.services.Id = element.Id;
+      this.services.Name = element.Name;
+      this.services.ImageUrl = element.ImageUrl;
+      this.services.Count = element.Count; 
+      this.mainList.push(this.services);
       console.log(element);
     }); 
   }

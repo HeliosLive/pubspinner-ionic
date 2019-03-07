@@ -37,6 +37,33 @@
         "ImageUrl": "../../assets/images/customers.png",
         "Count": 159.432
       }
+    ], 
+    "main": [
+      {
+        "Id": 1, 
+        "Name": "Kafe",
+        "ImageUrl": "../../assets/images/mainCafe.jpeg",
+        "Count":1294
+      },
+      {
+        "Id": 2, 
+        "Name": "Bar",
+        "ImageUrl": "../../assets/images/mainPub.jpeg",
+        "Count":1294
+      },
+      {
+        "Id": 3, 
+        "Name": "Restorant",
+        "ImageUrl": "../../assets/images/mainDinner.jpeg",
+        "Count":1294
+      },
+      {
+        "Id": 4, 
+        "Name": "Müze",
+        "ImageUrl": "../../assets/images/mainMuseum.jpeg",
+        "Count":1294
+      }
     ]
+
   }
 }

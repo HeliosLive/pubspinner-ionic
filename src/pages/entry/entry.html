@@ -28,10 +28,10 @@
 
   <ion-content fullscreen class="cont">
       <!-- Slider Banner top-->
-     <ion-slides pager loop="true" style="height:40%" >
-       <ion-slide *ngFor="let item of servicesList"
-                 class="slide-background"
-                 [ngStyle]="{ 'background': 'url(' + item.ImageUrl + ')'}">
+     <ion-slides pager loop="true" style="height:60%;" >
+       <ion-slide *ngFor="let item of mainList"
+                 class="slide-background" 
+                 [ngStyle]="{ 'background': 'url(' + item.ImageUrl + ')','background-size': 'cover' }">
          <div class="slide-content">
            <span class="header-font big-title uppercase">{{ item.Name }}</span>
            <small class="uppercase"></small>
