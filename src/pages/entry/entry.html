@@ -1,6 +1,6 @@
 <ion-header no-border>
     <ion-navbar transparent>
-        <ion-title text-right>
+        <ion-title text-center>
             PubSpinner
           </ion-title>
        <ion-buttons left>
@@ -10,12 +10,6 @@
       </ion-buttons>
             <ion-buttons end>
 
-        <!-- Product count icon in cart-->
-      <button ion-button id="notification-button" (click)="pushToCart($event)" >
-        <ion-icon name="cart" class="cart-icon">
-        <ion-badge  id="notifications-badge" color="danger"> 1</ion-badge>
-        </ion-icon>
-        </button>
         <!-- Notification count icon-->
         <button ion-button id="notification-button" (click)="goNotify()" >
           <ion-icon name="notifications" class="cart-icon">

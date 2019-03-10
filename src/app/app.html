@@ -1,1 +1,40 @@
-<ion-nav [root]="rootPage"></ion-nav>
+
+<ion-menu [content]="content" id="menu1" enabled="true">
+  
+    <ion-header class="card-background-page">
+      <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + headerImage + ')','background-size': 'cover'}">
+        <ion-thumbnail>
+          <img style="width:50px;" src="assets/images/beer.png" />
+        </ion-thumbnail>
+        <h6 text-center parallax-title> Pub Spinner</h6>
+      </div>
+    </ion-header>
+  
+     <!--Menu List when the user have loggedin-->
+    <ion-content class="menu-content myBg"> 
+      <ion-list  class="menu-content myBg" no-lines>
+        <button menuClose ion-item *ngFor="let p of userPages" (click)="openPage(p)" class="menu-content myBg" >
+             <div class="pagelist">
+                <ion-icon name="{{p.icon}}" color="danger"></ion-icon>
+                <label style="padding-left:20px; color: rgba(12, 2, 2, 0.856)">{{ p.title }}</label>
+              </div>
+        </button>
+      </ion-list>
+    </ion-content>
+     
+     <!--Menu List when the user have logged Out    İLERİDE OLUCAKKK-->
+     <!-- <ion-content class="menu-content myBg">
+        <ion-list  class="menu-content myBg" no-lines>
+          <button menuClose ion-item *ngFor="let p of userPages" (click)="openPage(p)" class="menu-content myBg" >
+               <div class="pagelist">
+                  <ion-icon name="{{p.icon}}" color="light"></ion-icon>
+                  <label style="padding-left:20px; color: #fff">{{ p.title }}</label>
+                </div>
+          </button>
+        </ion-list>
+      </ion-content> -->
+
+  </ion-menu>
+
+
+<ion-nav [root]="rootPage" #content></ion-nav>

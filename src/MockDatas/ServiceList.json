@@ -4,37 +4,37 @@
       {
         "Id": 1, 
         "Name": "Kafe",
-        "ImageUrl": "../../assets/images/cafe.jpg",
+        "ImageUrl": "assets/images/cafe.jpg",
         "Count":1294
       },
       {
         "Id": 2,
         "Name": "Bar",
-        "ImageUrl": "../../assets/images/beerImg.jpg",
+        "ImageUrl": "assets/images/beerImg.jpg",
         "Count":168
       },
       {
         "Id": 3,
         "Name": "Restorant",
-        "ImageUrl": "../../assets/images/dinner.png",
+        "ImageUrl": "assets/images/dinner.png",
         "Count":140
       },
       {
         "Id": 4,
         "Name": "Semt",
-        "ImageUrl": "../../assets/images/galata.jpg",
+        "ImageUrl": "assets/images/galata.jpg",
         "Count":35
       },
       {
         "Id": 5,
         "Name": "Sokak",
-        "ImageUrl": "../../assets/images/istiklal.jpg",
+        "ImageUrl": "assets/images/istiklal.jpg",
         "Count":560
       },
       {
         "Id": 6,
         "Name": "Kullanıcı",
-        "ImageUrl": "../../assets/images/customers.png",
+        "ImageUrl": "assets/images/customers.png",
         "Count": 159.432
       }
     ], 
@@ -42,25 +42,25 @@
       {
         "Id": 1, 
         "Name": "Kafe",
-        "ImageUrl": "../../assets/images/mainCafe.jpeg",
+        "ImageUrl": "assets/images/mainCafe.jpeg",
         "Count":1294
       },
       {
         "Id": 2, 
         "Name": "Bar",
-        "ImageUrl": "../../assets/images/mainPub.jpeg",
+        "ImageUrl": "assets/images/mainPub.jpeg",
         "Count":1294
       },
       {
         "Id": 3, 
         "Name": "Restorant",
-        "ImageUrl": "../../assets/images/mainDinner.jpeg",
+        "ImageUrl": "assets/images/mainDinner.jpeg",
         "Count":1294
       },
       {
         "Id": 4, 
         "Name": "Müze",
-        "ImageUrl": "../../assets/images/mainMuseum.jpeg",
+        "ImageUrl": "assets/images/mainMuseum.jpeg",
         "Count":1294
       }
     ]

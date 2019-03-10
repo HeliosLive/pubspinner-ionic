@@ -20,16 +20,14 @@ var MockServices = require('./../../MockDatas/ServiceList.json');
 export class EntryPage {
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
-    public menu: MenuController, public navParams: NavParams) {
+    public menu: MenuController, public navParams: NavParams,) {
 
   } 
 
   ionViewWillEnter(){
-    console.log("enter ! ");
   }
 
   ionViewDidLoad() { 
-    console.log("view loaded ! ");
     this.getServices();
     this.getMain();
   }
@@ -47,7 +45,6 @@ export class EntryPage {
       this.services.ImageUrl = element.ImageUrl;
       this.services.Count = element.Count; 
       this.servicesList.push(this.services);
-      console.log(element);
     }); 
   }
 
@@ -59,7 +56,6 @@ export class EntryPage {
       this.services.ImageUrl = element.ImageUrl;
       this.services.Count = element.Count; 
       this.mainList.push(this.services);
-      console.log(element);
     }); 
   }
 

@@ -1,0 +1,72 @@
+{
+  "places": {
+    "data": [
+      {
+        "Id": 1,
+        "Name": "Vana Kafe",
+        "Rating": 4.3,
+        "PlaceType": 1
+      },
+      {
+        "Id": 2,
+        "Name": "Hunters Cafe Hookah",
+        "Rating": 4.9,
+        "PlaceType": 1
+      },
+      {
+        "Id": 3,
+        "Name": "Krispy Kreme Doughnuts",
+        "Rating": 4.4,
+        "PlaceType": 1
+      },
+      {
+        "Id": 4,
+        "Name": "Deliorman Cafe",
+        "Rating": 4.5,
+        "PlaceType": 1
+      },
+      {
+        "Id": 5,
+        "Name": "Noblesse Bar",
+        "Rating": 5,
+        "PlaceType": 2
+      },
+      {
+        "Id": 6,
+        "Name": "Red River Pub",
+        "Rating": 4.4,
+        "PlaceType": 2
+      },
+      {
+        "Id": 7,
+        "Name": "Kozzbeer",
+        "Rating": 3.9,
+        "PlaceType": 2
+      },
+      {
+        "Id": 8,
+        "Name": "Panorama 1453 Tarih Müzesi",
+        "Rating": 4.4,
+        "PlaceType": 4
+      },
+      {
+        "Id": 9,
+        "Name": "Topkapi Palace Museum",
+        "Rating": 4.6,
+        "PlaceType": 4
+      },
+      {
+        "Id": 10,
+        "Name": "İstanbul Oyuncak Müzesi",
+        "Rating": 4.6,
+        "PlaceType": 4
+      },
+      {
+        "Id": 11,
+        "Name": "Rahmi M. Koç Museum",
+        "Rating": 4.8,
+        "PlaceType": 4
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+<ion-tabs #myTabs selectedIndex="0" no-border>
+  <ion-tab tabsHideOnSubPages="true" [root]="tab1Root" tabTitle="{{'Anasayfa'}}" tabIcon="home"></ion-tab>
+   <ion-tab tabsHideOnSubPages="true" [root]="tab2Root" tabTitle="{{'Liste'}}" tabIcon="list"></ion-tab>
+   <ion-tab tabsHideOnSubPages="true" [root]="tab3Root" tabTitle="" tabIcon=""></ion-tab>
+  <ion-tab tabsHideOnSubPages="true" [root]="tab4Root" tabTitle="{{'Harita'}}" tabIcon="map"></ion-tab>
+  <ion-tab tabsHideOnSubPages="true"  [root]="tab5Root" tabTitle="{{'Giriş'}}" tabIcon="contact"></ion-tab>
+<!-- SubTab button properties-->
+<ion-fab bottom center style="border-top: 0.55px solid rgba(0, 0, 0, 0.3);
+    z-index: 10; color:#ff0000;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;">
+    <button ion-fab width="57" height="57" (click)="selectTab()" color="primary">
+      <ion-icon name="cog" role="img" ></ion-icon> 
+     </button> 
+  </ion-fab>   
+     
+</ion-tabs>  
+
+

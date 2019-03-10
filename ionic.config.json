@@ -1,5 +1,7 @@
 {
   "name": "pubspinner-mobile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
