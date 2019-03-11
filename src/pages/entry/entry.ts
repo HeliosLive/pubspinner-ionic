@@ -54,7 +54,8 @@ export class EntryPage {
       this.services.Id = element.Id;
       this.services.Name = element.Name;
       this.services.ImageUrl = element.ImageUrl;
-      this.services.Count = element.Count; 
+      this.services.Description = element.Description; 
+      this.services.Description2 = element.Description2; 
       this.mainList.push(this.services);
     }); 
   }

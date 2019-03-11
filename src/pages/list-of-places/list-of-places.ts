@@ -77,7 +77,7 @@ export class ListOfPlacesPage {
                 Rating: item.google_rating
               }
           this.placesList.push(place);
-          console.log(place);
+          // console.log(place);
           }
                        
         }); 
@@ -102,7 +102,7 @@ export class ListOfPlacesPage {
                 Rating: item.google_rating
               }
           this.placesList.push(place);
-          console.log(place);
+          // console.log(place);
           }
                        
         }); 

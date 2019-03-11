@@ -21,21 +21,27 @@
       },
       {
         "Id": 4,
+        "Name": "Müze",
+        "ImageUrl": "assets/images/Museum.jpg",
+        "Count":109
+      },
+      {
+        "Id": 5,
         "Name": "Semt",
         "ImageUrl": "assets/images/galata.jpg",
         "Count":35
       },
       {
-        "Id": 5,
+        "Id": 6,
         "Name": "Sokak",
         "ImageUrl": "assets/images/istiklal.jpg",
         "Count":560
       },
       {
-        "Id": 6,
+        "Id": 7,
         "Name": "Kullanıcı",
         "ImageUrl": "assets/images/customers.png",
-        "Count": 159.432
+        "Count": 19.902
       }
     ], 
     "main": [
@@ -43,25 +49,29 @@
         "Id": 1, 
         "Name": "Kafe",
         "ImageUrl": "assets/images/mainCafe.jpeg",
-        "Count":1294
+        "Description":"Bi' Kahve Molası ",
+        "Description2":"ama Nerede ?"
       },
       {
         "Id": 2, 
         "Name": "Bar",
         "ImageUrl": "assets/images/mainPub.jpeg",
-        "Count":1294
+        "Description":"Haftasonu Nerede ",
+        "Description2":"Eğlensek ?"
       },
       {
         "Id": 3, 
         "Name": "Restorant",
         "ImageUrl": "assets/images/mainDinner.jpeg",
-        "Count":1294
+        "Description":"Hoş Müzikler Eşliğinde",
+        "Description2":"Hangi Restorant'a Gitsek ?"
       },
       {
         "Id": 4, 
         "Name": "Müze",
         "ImageUrl": "assets/images/mainMuseum.jpeg",
-        "Count":1294
+        "Description":"İstanbulda Olup ",
+        "Description2":"Müze Gezmemek Olur Mu ?"
       }
     ]
 

@@ -40,7 +40,7 @@ export class PlaceService {
       this.http.get(this.url + '/AllPlaces?' + "pageIndex=" + pageIndex + "&placeName=" + searchString, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
-          console.log("gelen datalar",res.json());
+          // console.log("gelen datalar",res.json());
         },
           (err) => {
             console.log(err);

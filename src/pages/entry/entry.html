@@ -1,7 +1,7 @@
 <ion-header no-border>
     <ion-navbar transparent>
         <ion-title text-center>
-            PubSpinner
+            <img class="expanded-image" style="height:70px;" src="assets/images/titlePubSpinner.png" />
           </ion-title>
        <ion-buttons left>
           <button ion-button menuToggle>
@@ -26,11 +26,10 @@
        <ion-slide *ngFor="let item of mainList"
                  class="slide-background" 
                  [ngStyle]="{ 'background': 'url(' + item.ImageUrl + ')','background-size': 'cover' }">
-         <div class="slide-content">
-           <span class="header-font big-title uppercase">{{ item.Name }}</span>
-           <small class="uppercase"></small>
-           <small class="bottom-text uppercase">{{ item.Id }}</small>
-           <button ion-button round color="chocolate">{{ item.Count }}</button>
+         <div class="slide-content"> 
+           <button ion-button round color="favorite" class="DescriptionBtn">
+             {{ item.Description }} <br> {{ item.Description2 }}
+            </button>
          </div>
        </ion-slide>
      </ion-slides>
