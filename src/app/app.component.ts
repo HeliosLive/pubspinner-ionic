@@ -14,7 +14,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;  
   rootPage:any = TabsPage;
   public activePage: any;
-  headerImage = "assets/images/watercolor.jpg";
+  headerImage = "assets/images/logotransparan.png";
  
  
   public pages: Array<{title: string, component: any, icon: string}>;
@@ -26,7 +26,10 @@ export class MyApp {
     this.userPages = [
       { title: 'Favorilerim', component: 'FavoritesPage', icon:"star" },
       { title: 'Profilim', component: 'ProfilePage', icon:"person" },
-      { title: 'Ayarlar', component: 'SettingsPage', icon:"settings" }
+      { title: 'Haftanın En İyisi', component: 'SettingsPage', icon:"battery-charging" },
+      { title: 'Popülerite', component: 'SettingsPage', icon:"flash" },
+      { title: 'Ayarlar', component: 'SettingsPage', icon:"settings" },
+      { title: 'Kullanım Kılavuzu', component: 'SettingsPage', icon:"book" }
     ];
       // menu list navigation when user Login
     this.pages = [

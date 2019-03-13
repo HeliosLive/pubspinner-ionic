@@ -2,18 +2,19 @@
 <ion-menu [content]="content" id="menu1" enabled="true">
   
     <ion-header class="card-background-page">
-      <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + headerImage + ')','background-size': 'cover'}">
+      <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + headerImage + ')','background-size':'contain','background-repeat':'no-repeat'}">
         <ion-thumbnail>
-          <img style="width:50px;" src="assets/images/iconPubSpinner.png" />
+          <!-- <img style="width:50px;" src="assets/images/iconPubSpinner.png" /> -->
         </ion-thumbnail>
-        <h6 text-center parallax-title> Pub Spinner</h6>
+        <!-- <h6 text-center parallax-title> Pub Spinner</h6> -->
       </div>
     </ion-header>
   
      <!--Menu List when the user have loggedin-->
-    <ion-content class="menu-content myBg"> 
+    <ion-content class="menu-content"> 
       <ion-list  class="menu-content myBg" no-lines>
-        <button menuClose ion-item *ngFor="let p of userPages" (click)="openPage(p)" class="menu-content myBg" >
+        <button menuClose ion-item *ngFor="let p of userPages" (click)="openPage(p)" class="menu-content myBg"
+        [ngStyle]="{'background-image' : 'url(../assets/images/sideBackground.jpg)'}" >
              <div class="pagelist">
                 <ion-icon name="{{p.icon}}" color="danger"></ion-icon>
                 <label style="padding-left:20px; color: rgba(12, 2, 2, 0.856)">{{ p.title }}</label>

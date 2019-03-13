@@ -13,9 +13,9 @@ export class AssetsProvider {
   public alertCtrl: AlertController,
   private platform:Platform) {
   }
-  loadingShow() {
+  loadingShow(title:string) {
     this.loading = this.loadingCtrl.create({
-      content: 'Lütfen bekleyin...'
+      content: title
     });
     this.loading.present();
   }

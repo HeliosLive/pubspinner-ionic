@@ -23,6 +23,7 @@ var MockServices = require('./../../MockDatas/PlaceList.json');
 export class ListOfPlacesPage {
 
   information: any[];
+  loader: any
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public menu: MenuController, public assetService: AssetsProvider ,
@@ -49,6 +50,7 @@ export class ListOfPlacesPage {
 
   ionViewDidLoad() {
     //this.getPlaces(); 
+    this.assetService.loadingShow("Mekanlar Yükleniyor.."); 
     this.getAllPlaces();
   }
 
@@ -103,10 +105,12 @@ export class ListOfPlacesPage {
               }
           this.placesList.push(place);
           // console.log(place);
+          this.assetService.loadingDismiss();
           }
                        
         }); 
       }).catch((err) => {
+        this.assetService.loadingDismiss();
         console.log(err);
       });
   }
@@ -116,7 +120,7 @@ export class ListOfPlacesPage {
     let ticketCategory = "";
     this.navCtrl.push("PlaceDetailPage", {  passedTicketCategory: ticketCategory, passedWorkOrder: "test"});
   }
-
+ 
 }
 
 
