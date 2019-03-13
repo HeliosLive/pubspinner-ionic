@@ -14,7 +14,10 @@
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <preference name="SplashScreen" value="true" />
+    <!-- <preference name="SplashMaintainAspectRatio" value="true" />-->
+    <preference name="FadeSplashScreenDuration" value="300" /> 
+    <!-- <preference name="SplashShowOnlyFirstTime" value="false" /> -->
+    <!-- <preference name="SplashScreen" value="true" /> -->
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="ShowSplashScreen" value="true" />
