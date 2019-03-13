@@ -5,7 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  
 import { EntryPage } from '../pages/entry/entry'; 
 import { TabsPage } from '../pages/tabs/tabs';
-  
+
+import { timer } from 'rxjs/observable/timer';
+
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,7 +17,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;  
   rootPage:any = TabsPage;
   public activePage: any;
-  headerImage = "assets/images/logotransparan.png"; 
+  headerImage = "assets/images/logotransparan.png";
+  showSplash = true;
  
   public pages: Array<{title: string, component: any, icon: string}>;
   public userPages: Array<{title: string, component: any, icon: string}>;
@@ -41,7 +45,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide(); 
-      // timer(3000).subscribe(() => this.showSplash = false) 
+      timer(5000).subscribe(() => this.showSplash = false)
+      // setTimeout(() => {
+      //   this.showSplash = false; 
+      // }, 7000);
     });
   }
 }

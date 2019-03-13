@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, MenuController, ToastController, NavParams, IonicPage} from 'ionic-angular';
 import { ServiceList } from '../../models/ServiceList';
 
+import { timer } from 'rxjs/observable/timer';
+
 declare var require: any;
 var MockServices = require('./../../MockDatas/ServiceList.json'); 
 
@@ -27,14 +29,13 @@ export class EntryPage {
   } 
 
   ionViewWillEnter(){
+    timer(5000).subscribe(() => this.showSplash = false)
   }
 
   ionViewDidLoad() { 
     this.getServices();
     this.getMain();
-    setTimeout(() => {
-      this.showSplash = false; 
-    }, 7200);
+   
   }
   
   services:ServiceList;

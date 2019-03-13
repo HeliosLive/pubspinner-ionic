@@ -1,4 +1,4 @@
-<ion-tabs #myTabs selectedIndex="0" no-border>
+<ion-tabs #myTabs selectedIndex="0" no-border *ngIf="!showSplash">
   <ion-tab tabsHideOnSubPages="true" [root]="tab1Root" tabTitle="{{'Anasayfa'}}" tabIcon="home"></ion-tab>
    <ion-tab tabsHideOnSubPages="true" [root]="tab2Root" tabTitle="{{'Liste'}}" tabIcon="list"></ion-tab>
    <ion-tab tabsHideOnSubPages="true" [root]="tab3Root" tabTitle="" tabIcon=""></ion-tab>
@@ -17,3 +17,7 @@
 </ion-tabs>  
 
 
+<div style="margin-top:30%" *ngIf="showSplash">
+    <img src="assets/images/pubSpinnerSplash.gif"> 
+    <img style="margin-left:4%" src="assets/images/loadingText.png">  
+</div>

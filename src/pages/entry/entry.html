@@ -1,10 +1,10 @@
 
-<div style="margin-top:30%" *ngIf="showSplash">
-    <img  src="assets/images/pubSpinnerSplash.gif"> 
+<!-- <div style="margin-top:30%" *ngIf="showSplash">
+    <img src="assets/images/pubSpinnerSplash.gif"> 
     <img style="margin-left:4%" src="assets/images/loadingText.png">  
-</div>
+</div> -->
 
-<ion-header no-border *ngIf="!showSplash">
+<ion-header no-border  >
     <ion-navbar transparent>
         <ion-title text-center>
             <img class="expanded-image" style="height:70px;" src="assets/images/titlePubSpinner.png" />
@@ -26,7 +26,7 @@
     </ion-navbar>
   </ion-header>
 
-  <ion-content fullscreen class="cont" *ngIf="!showSplash">
+  <ion-content fullscreen class="cont" >
       <!-- Slider Banner top-->
      <ion-slides pager loop="true" style="height:60%;" >
        <ion-slide *ngFor="let item of mainList"
