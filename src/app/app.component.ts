@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
  
 import { EntryPage } from '../pages/entry/entry'; 
 import { TabsPage } from '../pages/tabs/tabs';
-
+  
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,8 +14,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;  
   rootPage:any = TabsPage;
   public activePage: any;
-  headerImage = "assets/images/logotransparan.png";
- 
+  headerImage = "assets/images/logotransparan.png"; 
  
   public pages: Array<{title: string, component: any, icon: string}>;
   public userPages: Array<{title: string, component: any, icon: string}>;
@@ -41,7 +40,8 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      splashScreen.hide();
+      splashScreen.hide(); 
+      // timer(3000).subscribe(() => this.showSplash = false) 
     });
   }
 }

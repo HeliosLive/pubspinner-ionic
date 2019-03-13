@@ -14,7 +14,7 @@
     <ion-content class="menu-content"> 
       <ion-list  class="menu-content myBg" no-lines>
         <button menuClose ion-item *ngFor="let p of userPages" (click)="openPage(p)" class="menu-content myBg"
-        [ngStyle]="{'background-image' : 'url(../assets/images/sideBackground.jpg)'}" >
+        [ngStyle]="{'background-image' : 'url(assets/images/sideBackground.jpg)'}" >
              <div class="pagelist">
                 <ion-icon name="{{p.icon}}" color="danger"></ion-icon>
                 <label style="padding-left:20px; color: rgba(12, 2, 2, 0.856)">{{ p.title }}</label>

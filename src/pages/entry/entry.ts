@@ -19,6 +19,8 @@ var MockServices = require('./../../MockDatas/ServiceList.json');
 })
 export class EntryPage {
 
+  showSplash = true;
+
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, 
     public menu: MenuController, public navParams: NavParams,) {
 
@@ -30,6 +32,9 @@ export class EntryPage {
   ionViewDidLoad() { 
     this.getServices();
     this.getMain();
+    setTimeout(() => {
+      this.showSplash = false; 
+    }, 7200);
   }
   
   services:ServiceList;
