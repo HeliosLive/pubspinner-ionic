@@ -26,7 +26,7 @@ export class TabsPage {
   }
   
   ionViewWillEnter(){
-    timer(5000).subscribe(() => this.showSplash = false)
+    timer(4500).subscribe(() => this.showSplash = false)
   }
 
   selectTab() {

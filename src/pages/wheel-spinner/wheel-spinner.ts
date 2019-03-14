@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import * as $ from "jquery";
+
 
 /**
  * Generated class for the WheelSpinnerPage page.
@@ -23,4 +25,24 @@ export class WheelSpinnerPage {
     console.log('ionViewDidLoad WheelSpinnerPage');
   }
 
+  ngAfterViewInit(){
+    $(document).ready(function(){
+        //alert('JQuery is working!!');
+    });
+}
+
+swipeEvent(event:any){  
+  $(document).ready(function(){   
+    $('#spinImg').clearQueue().delay(300).animate(
+      { deg: 1800 },
+      {
+        duration: 5200,
+        step: function(now) {
+          $(this).css({ transform: 'rotate(' + now + 'deg)' });
+        }
+      }
+    );
+}); 
+}
+ 
 }
