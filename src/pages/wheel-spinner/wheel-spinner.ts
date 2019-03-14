@@ -1,7 +1,12 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { Component } from "@angular/core";
+import {
+  IonicPage,
+  NavController,
+  NavParams,
+  MenuController
+} from "ionic-angular";
 import * as $ from "jquery";
-
+import { AssetsProvider } from "../../providers/assets/assets";
 
 /**
  * Generated class for the WheelSpinnerPage page.
@@ -12,37 +17,63 @@ import * as $ from "jquery";
 
 @IonicPage()
 @Component({
-  selector: 'page-wheel-spinner',
-  templateUrl: 'wheel-spinner.html',
+  selector: "page-wheel-spinner",
+  templateUrl: "wheel-spinner.html"
 })
 export class WheelSpinnerPage {
+  rotation: number = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-    public menu: MenuController) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public menu: MenuController,
+    public assetService: AssetsProvider
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WheelSpinnerPage');
+    console.log("ionViewDidLoad WheelSpinnerPage");
   }
 
-  ngAfterViewInit(){
-    $(document).ready(function(){
-        //alert('JQuery is working!!');
+  ngAfterViewInit() {
+    $(document).ready(function() {
+      //alert('JQuery is working!!');
     });
+  }
+
+  swipeEvent(event: any) {
+    $(document).ready(function() {
+      $({ deg: 0 }).animate(
+        { deg: 1800 },
+        {
+          duration: 4000,
+          step: function(now) {
+            $("#spinImg").css({
+              transform: "rotate(" + now + "deg)"
+            });
+          }
+        }
+      );
+    });
+
+    setTimeout(() => {
+      this.assetService.presentToast(
+        " Çarkı çevirdin ve bahtında xyz mekanı varmış ;) "
+      );
+    }, 3000);
+  }
 }
 
-swipeEvent(event:any){  
-  $(document).ready(function(){   
-    $('#spinImg').clearQueue().delay(300).animate(
-      { deg: 1800 },
-      {
-        duration: 5200,
-        step: function(now) {
-          $(this).css({ transform: 'rotate(' + now + 'deg)' });
-        }
-      }
-    );
-}); 
-}
- 
-}
+/* JUST TRIGGER ONCE ! 
+
+    // $('#spinImg').animate(
+    //   { deg: 1800 },
+    //   {
+    //     queue: false,
+    //     duration: 500,
+    //     step: function(now) {
+    //       $(this).css({ transform: 'rotate(' + now + 'deg)' });
+    //     }
+    //   }
+    // ); 
+    
+*/
