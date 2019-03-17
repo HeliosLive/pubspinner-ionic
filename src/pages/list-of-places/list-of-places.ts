@@ -88,7 +88,7 @@ export class ListOfPlacesPage {
       });
   }
 
-  getAllPlaces(pageIndex?:number,searchString?:string){ 
+  getAllPlaces(pageIndex?:number,searchString?:string){  
     searchString = (searchString == undefined) ? this.searchPlaces : searchString;
     pageIndex = (pageIndex > 0 ) ? pageIndex : 0; 
     
@@ -115,10 +115,10 @@ export class ListOfPlacesPage {
       });
   }
 
-  goPlaceDetail(index:number) {
+  goPlaceDetail(placeId:number) {
     this.assetService.presentToast('Mekan Detayları Yüklendi..');
     let ticketCategory = "";
-    this.navCtrl.push("PlaceDetailPage", {  passedTicketCategory: ticketCategory, passedWorkOrder: "test"});
+    this.navCtrl.push("PlaceDetailPage", { placeId: placeId }); //, passedWorkOrder: "test"
   }
  
 }

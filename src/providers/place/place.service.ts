@@ -15,21 +15,37 @@ export class PlaceService {
 
   url: string = this.apiUrl + "/overall"; 
 
+  getPlacePhotos(placeId: number) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.get( 'https://localhost:44309/api/photo/GetPhotoForPlace?' + "placeId=" +  placeId , { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+          // console.log("gelen datalar",res.json());
+        },
+          (err) => {
+            console.log(err);
+            reject(err);
+            alert("WS Hatası: getReservation");
+          })
+    });
+  }
+
   getPlaceDetail(placeId: number) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
-      headers.append("Content-Type", "application/json");
-
-      let options = new RequestOptions({ headers: headers });
-
-      this.http.get(this.url + "/GetPlacesById", options).subscribe(
-        res => {
+      headers.append('Content-Type', 'application/json');
+      this.http.get( this.url + '/PlacesById?' + "placeId=" +  placeId , { headers: headers })
+        .subscribe(res => {
           resolve(res.json());
+          // console.log("gelen datalar",res.json());
         },
-        err => {
-          reject(err);
-        }
-      );
+          (err) => {
+            console.log(err);
+            reject(err);
+            alert("Servise Ulaşılamadı");
+          })
     });
   }
 
@@ -45,7 +61,7 @@ export class PlaceService {
           (err) => {
             console.log(err);
             reject(err);
-            alert("WS Hatası: getReservation");
+            alert("Servise Ulaşılamadı");
           })
     });
   }

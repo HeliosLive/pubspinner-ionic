@@ -54,6 +54,14 @@
 
 }
 
+.capitalize {
+  text-transform: lowercase;
+}
+.capitalize:first-letter { text-transform: uppercase; }
+
+.lowercase {
+  text-transform: lowercase;
+}
 
 .popover-wrapper .popover-content {
     box-shadow: 0px 3px 15px 0px rgba(0,0,0,0.25);

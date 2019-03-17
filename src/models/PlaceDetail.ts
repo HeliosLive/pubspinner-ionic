@@ -1,16 +1,24 @@
+import { GenelModel } from "./GenelModel";
+import { Photo } from "./Photo";
+import { Review } from "./Review";
+
 export class PlaceDetail {
-    "Id":Number;
-    "PlaceTypeId":Number;
-    "Name":string;
-    "Address":string;
-    "CityId":number;
-    "DistrictId":number;
-    "Latitude":number;
-    "Longitude":number;
-    "CreateUserId":number;
-    "CreateDate":string;
-    "UpdateDate":string;
-    "FavoriteCount":number;
-    "google_rating":number;
-    "google_rating_votes":number; 
+    active:boolean;
+    address:string;
+    city:GenelModel;
+    district:GenelModel;
+    favoriteCount:number;
+    google_phone_number:string;
+    google_place_id:string;
+    google_rating:number;
+    google_rating_votes:number; 
+    id:Number;
+    latitude:number;
+    longitude:number;
+    name:string;
+    openingHours:string;
+    photos:Photo[];
+    placeReviews:Review[];
+    placeType:GenelModel;
+    website:string; 
 } 

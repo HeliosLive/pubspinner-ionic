@@ -25,7 +25,7 @@
             <!-- First Level -->
             <ion-list-header *ngFor="let item of placesList; let i = index" no-lines no-padding>
               <!-- Toggle Button -->
-              <button ion-item (click)="goPlaceDetail(i)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
+              <button ion-item (click)="goPlaceDetail(item.Id)" detail-none [ngClass]="{'section-active': item.open, 'section': !item.open}">
                   #{{ i+1 }} -  {{ item.Name }} 
                   <a text-lowercase text-right item-right>{{ item.Rating }} <ion-icon item-right name="star"></ion-icon>  </a> 
                   <ion-icon item-right name="cafe" *ngIf="item.PlaceType == 1"></ion-icon>
