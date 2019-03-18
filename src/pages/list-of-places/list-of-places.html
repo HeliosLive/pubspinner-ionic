@@ -20,7 +20,33 @@
 
 <ion-content padding> 
    <ion-searchbar [(ngModel)]="searchPlaces" (input)="getSearchedPlaces()" (ionClear)="onCancelSearched(2)" placeholder="Arama"></ion-searchbar>
-    <div   class="card-example-view">
+  
+   <ion-row>
+    <ion-col col-12>
+      <ion-item>
+        <ion-label>Mekan Tipi</ion-label>
+        <ion-select [(ngModel)]="placeTypeId" (ngModelChange)="changeInMacro()" (ionChange)="selectPlaceType($event)" multiple="false">
+          <ion-option value="0">Hepsi</ion-option> 
+          <ion-option value="1">Kafe</ion-option> 
+          <ion-option value="2">Bar</ion-option> 
+          <ion-option value="3">Restorant</ion-option> 
+          <ion-option value="4">Müze</ion-option> 
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-12>
+        <ion-item>
+            <ion-label style="margin-bottom: -10%;">Popülarite</ion-label> 
+            <ion-range min="0" max="5" step="1" snaps="true" pin="true" color="pending" [(ngModel)]="placeStar" (ionChange)="changeInMacro()">
+                <ion-icon small range-left name="star-outline"></ion-icon>
+                <ion-icon range-right name="star"></ion-icon>
+              </ion-range>
+          </ion-item>
+    </ion-col>
+  </ion-row>
+
+    
+   <div class="card-example-view">
         <ion-list class="accordion-list">
             <!-- First Level -->
             <ion-list-header *ngFor="let item of placesList; let i = index" no-lines no-padding>

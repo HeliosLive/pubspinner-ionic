@@ -47,6 +47,8 @@ export class ListOfPlacesPage {
   searchPlaces:string="";
   places:PlaceList;
   placesList:PlaceList[]=[];  
+  placeTypeId:number[]=[0];  
+  placeStar:number=0;
 
   ionViewDidLoad() {
     //this.getPlaces(); 
@@ -65,9 +67,19 @@ export class ListOfPlacesPage {
     this.getAllPlaces(this.infinityScroll,"");
   }
 
+  selectPlaceType(event:any){
+    console.log("event",event);
+    console.log("this.placeStar",this.placeStar);
+  }
+
+  changeInMacro(){
+    this.searchPlaces = "";
+    this.getSearchedPlaces();
+  }
+
   getSearchedPlaces(){ 
     this.placesList = [];
-    this.placeService.getPlaces(0,this.searchPlaces).then((result: any) => { 
+    this.placeService.getPlaces(0,this.searchPlaces,this.placeTypeId,this.placeStar).then((result: any) => { 
       console.log("iletilen data", result);
         result.forEach(item => {
           if(item.id){
@@ -92,7 +104,7 @@ export class ListOfPlacesPage {
     searchString = (searchString == undefined) ? this.searchPlaces : searchString;
     pageIndex = (pageIndex > 0 ) ? pageIndex : 0; 
     
-    this.placeService.getPlaces(pageIndex,searchString).then((result: any) => { 
+    this.placeService.getPlaces(pageIndex,searchString,this.placeTypeId,this.placeStar).then((result: any) => { 
       console.log("iletilen data", result);
         result.forEach(item => {
           if(item.id){

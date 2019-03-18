@@ -49,11 +49,15 @@ export class PlaceService {
     });
   }
 
-  getPlaces(pageIndex: number,searchString:string) {
+  getPlaces(pageIndex: number,searchString:string,placeTypeId:number[],placeStar:number) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get(this.url + '/AllPlaces?' + "pageIndex=" + pageIndex + "&placeName=" + searchString, { headers: headers })
+      this.http.get(this.url + '/AllPlaces?' + "pageIndex=" + pageIndex 
+      + "&placeName=" + searchString 
+      + "&PlaceTypeId=" + placeTypeId 
+      + "&PlaceStar=" + placeStar,{ headers: headers })
+      // this.http.get( 'https://localhost:44309/api/overall/AllPlaces?' + "pageIndex=" + pageIndex + "&placeName=" + searchString, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
           // console.log("gelen datalar",res.json());
