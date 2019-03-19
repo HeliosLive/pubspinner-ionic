@@ -24,6 +24,7 @@ export class ListOfPlacesPage {
 
   information: any[];
   loader: any
+  IslacesList:boolean=false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public menu: MenuController, public assetService: AssetsProvider ,
@@ -91,10 +92,13 @@ export class ListOfPlacesPage {
                 Rating: item.google_rating
               }
           this.placesList.push(place);
+          console.log("placeList",this.placesList);
           // console.log(place);
-          }
-                       
-        }); 
+          }            
+        });  
+        if(result.length == 0){
+          this.IslacesList = true;
+        }
       }).catch((err) => {
         console.log(err);
       });
@@ -118,9 +122,11 @@ export class ListOfPlacesPage {
           this.placesList.push(place);
           // console.log(place);
           this.assetService.loadingDismiss();
-          }
-                       
+          }                       
         }); 
+        if(result.length == 0){
+          this.IslacesList = true;
+        }
       }).catch((err) => {
         this.assetService.loadingDismiss();
         console.log(err);
