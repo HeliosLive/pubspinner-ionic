@@ -7,6 +7,9 @@ import {
 } from "ionic-angular";
 import * as $ from "jquery";
 import { AssetsProvider } from "../../providers/assets/assets";
+import { PlaceService } from "../../providers/place/place.service";
+import { PlaceFilter } from "../../models/PlaceFilter";
+import { Distance } from "../../models/Distance";
 
 /**
  * Generated class for the WheelSpinnerPage page.
@@ -22,15 +25,25 @@ import { AssetsProvider } from "../../providers/assets/assets";
 })
 export class WheelSpinnerPage {
   rotation: number = 0;
+  placeStar:number=0;
+  placeDistance:number = 30 ;
+  placeTypeId : number=0;
+  districtList:number[];
+  districtId:number[];
+  filter:PlaceFilter = new PlaceFilter();
+  distance:Distance = new Distance();
+  returnPlaceId:number;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public menu: MenuController,
-    public assetService: AssetsProvider
+    public assetService: AssetsProvider,
+    private placeService: PlaceService
   ) {}
 
   ionViewDidLoad() {
+    this.getDistricts(); 
     console.log("ionViewDidLoad WheelSpinnerPage");
   }
 
@@ -40,7 +53,41 @@ export class WheelSpinnerPage {
     });
   }
 
+  getDistricts(){ 
+      this.placeService.getDistricts(1).then((result: any) => {  // cityId şimdilik istanbul 
+            if(result){    
+              this.districtList = result; 
+            console.log("districtList ",this.districtList);   
+            }     
+        }).catch((err) => {
+          console.log(err);
+        }); 
+  }
+
+  getPlaceByFilter(){ 
+    debugger;
+    this.filter.cities = 1; // cityId şimdilik istanbul 
+    this.filter.districts = this.districtId;
+    this.filter.placeStar = this.placeStar;
+    this.filter.distances.Latitude = 40.9731761; // buraya geolocation infos gelcek
+    this.filter.distances.Longitude = 28.7257059; // buraya geolocation infos gelcek
+    this.filter.distances.MaxDistance = this.placeDistance;
+    this.filter.placeTypes = this.placeTypeId;
+ 
+    this.placeService.getPlaceByFilter(this.filter).then((result: any) => {  
+          if(result){    
+            this.returnPlaceId = result; 
+          console.log("result ",result);   
+          console.log("returnPlaceId ",this.returnPlaceId);   
+          }     
+      }).catch((err) => {
+        console.log(err);
+      }); 
+}
+
   swipeEvent(event: any) {
+    debugger;
+    this.getPlaceByFilter();
     $(document).ready(function() {
       $({ deg: 0 }).animate(
         { deg: 1800 },

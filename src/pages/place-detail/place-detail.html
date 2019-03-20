@@ -72,8 +72,25 @@
                  </ion-slides>  
             </ion-item>
         </ion-card-content> 
+      </ion-card> 
+
+      <ion-card *ngIf="placeDetailModel.overAllPlace">
+        <ion-card-header>
+          Fiyat Bilgisi
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item *ngFor="let item of placeDetailModel.overAllPlace">
+            <button ion-button color="head" block *ngIf="item.overAllTypeId == 4">
+              <span class="capitalize" *ngIf="item.overAllId == 1"> Ucuz</span>
+              <span class="capitalize" *ngIf="item.overAllId == 2"> Makul </span>
+              <span class="capitalize" *ngIf="item.overAllId == 3"> Standart </span>
+              <span class="capitalize" *ngIf="item.overAllId == 4"> Pahalı</span>
+              <span class="capitalize" *ngIf="item.overAllId == 5"> Bilinmiyor</span>
+            </button>
+          </ion-item>
+        </ion-card-content>
       </ion-card>
-      
+
       <ion-card *ngIf="placeDetailModel.openingHours">
           <ion-card-header>
             Çalışma Saatleri
@@ -87,6 +104,17 @@
           </ion-card-content>
       </ion-card>
 
+      <ion-card *ngIf="placeDetailModel.latitude">
+        <ion-card-header>
+          Konum
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item>
+            <div #map_canvas id="map_canvas"></div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+
       <ion-card *ngIf="placeDetailModel.placeReviews">
           <ion-card-header>
             Yorumlar
@@ -95,7 +123,7 @@
               <ion-slides *ngIf="placeDetailModel.placeReviews" pager loop="true" style="height:100%;" effect="slide" paginationType="fraction">
                   <ion-slide *ngFor="let item of placeDetailModel.placeReviews">
                    <div class="slide-content capitalize">  
-                      <button ion-button color="favorite" outline> 
+                      <button ion-button color="favorite" style="height:auto" outline> 
                           <span class="capitalize">  Kişi : </span>
                           <span class="capitalize"> {{item.authorName}} </span> 
                         </button>  <br>

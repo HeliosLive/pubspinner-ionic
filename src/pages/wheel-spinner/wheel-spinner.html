@@ -6,19 +6,73 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar transparant>
       <ion-buttons left>
          <button ion-button menuToggle>
            <ion-icon name="menu"></ion-icon>
          </button>
      </ion-buttons>
-    <ion-title text-center style="margin-left:-11%;">Çarkı Çevir !</ion-title>
+    <ion-title text-center style="margin-left:-11%;">
+        <img class="expanded-image" style="height:60px;" src="assets/images/titlePubSpinner.png" />
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding> 
+
+    <ion-title text-center><span>Filtreleri Belirle ve Çarkı Çevir</span> </ion-title> 
+
+    <ion-row> 
+        <ion-col col-6>
+          <ion-item>
+            <ion-label>İl</ion-label>
+            <ion-select [(ngModel)]="cityId" multiple="false">
+              <ion-option value="0" disabled >Bir İl Seçiniz..</ion-option>
+              <ion-option value="1">İstanbul</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label>İlçe</ion-label>
+            <ion-select [(ngModel)]="filter.districts" multiple="true">
+              <ion-option *ngFor="let item of districtList" value="{{item.Id}}"> {{item.name}} </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>Mekan Tipi</ion-label>
+            <ion-select [(ngModel)]="filter.placeTypes" multiple="false">
+              <ion-option value="0">Hepsi</ion-option> 
+              <ion-option value="1">Kafe</ion-option> 
+              <ion-option value="2">Bar</ion-option> 
+              <ion-option value="3">Restorant</ion-option> 
+              <ion-option value="4">Müze</ion-option> 
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col col-12>
+            <ion-item>
+                <ion-label style="margin-bottom: -10%;">Popülarite</ion-label> 
+                <ion-range min="0" max="5" step="1" snaps="true" pin="true" color="pending" [(ngModel)]="filter.placeStar">
+                    <ion-icon small range-left name="star-outline"></ion-icon>
+                    <ion-icon range-right name="star"></ion-icon>
+                  </ion-range>
+              </ion-item>
+        </ion-col>
+        <ion-col col-12>
+            <ion-item>
+                <ion-label style="margin-bottom: -10%;">Uzaklık</ion-label> 
+                <ion-range min="1" max="100" step="1" snaps="true" pin="true" color="pending" [(ngModel)]="distance.MaxDistance">
+                    <ion-label range-left>1km</ion-label>
+                    <ion-label range-right>100km</ion-label>
+                  </ion-range>
+              </ion-item>
+        </ion-col>
+      </ion-row>
 
 <div class="spinner">
   <img src="assets/images/nowSpinTheWheel.png" id="spinImg" (swipe)="swipeEvent($event)" style="width:100%"> 
