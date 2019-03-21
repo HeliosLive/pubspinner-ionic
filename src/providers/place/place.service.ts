@@ -92,10 +92,10 @@ export class PlaceService {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       this.http.get(this.url + '/AllPlaces?' + "pageIndex=" + pageIndex 
+      // this.http.get( 'https://localhost:44309/api/overall/AllPlaces?' + "pageIndex=" + pageIndex 
       + "&placeName=" + searchString 
       + "&PlaceTypeId=" + placeTypeId 
       + "&PlaceStar=" + placeStar,{ headers: headers })
-      // this.http.get( 'https://localhost:44309/api/overall/AllPlaces?' + "pageIndex=" + pageIndex + "&placeName=" + searchString, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
           // console.log("gelen datalar",res.json());
