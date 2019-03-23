@@ -3,13 +3,15 @@ import {
   IonicPage,
   NavController,
   NavParams,
-  MenuController
+  MenuController,
+  ModalController
 } from "ionic-angular";
 import * as $ from "jquery";
 import { AssetsProvider } from "../../providers/assets/assets";
 import { PlaceService } from "../../providers/place/place.service";
 import { PlaceFilter } from "../../models/PlaceFilter";
 import { Distance } from "../../models/Distance";
+import { PlaceDetailPage } from "../place-detail/place-detail";
 
 /**
  * Generated class for the WheelSpinnerPage page.
@@ -25,11 +27,11 @@ import { Distance } from "../../models/Distance";
 })
 export class WheelSpinnerPage {
   rotation: number = 0;
-  placeStar:number=0;
+  placeStar:number=3; 
   placeDistance:number = 30 ;
-  placeTypeId : number=0;
+  placeTypeId : number=1;
   districtList:number[];
-  districtId:number[];
+  districtId:any[]=[];
   filter:PlaceFilter = new PlaceFilter();
   distance:Distance = new Distance();
   returnPlaceId:number;
@@ -39,7 +41,8 @@ export class WheelSpinnerPage {
     public navParams: NavParams,
     public menu: MenuController,
     public assetService: AssetsProvider,
-    private placeService: PlaceService
+    private placeService: PlaceService,
+    public modalCtrl: ModalController
   ) {}
 
   ionViewDidLoad() {
@@ -65,7 +68,6 @@ export class WheelSpinnerPage {
   }
 
   getPlaceByFilter(){ 
-    debugger;
     this.filter.cities = 1; // cityId şimdilik istanbul 
     this.filter.districts = this.districtId;
     this.filter.placeStar = this.placeStar;
@@ -74,25 +76,51 @@ export class WheelSpinnerPage {
     this.filter.distances.MaxDistance = this.placeDistance;
     this.filter.placeTypes = this.placeTypeId;
  
-    this.placeService.getPlaceByFilter(this.filter).then((result: any) => {  
-          if(result){    
-            this.returnPlaceId = result; 
-          console.log("result ",result);   
-          console.log("returnPlaceId ",this.returnPlaceId);   
-          }     
-      }).catch((err) => {
-        console.log(err);
-      }); 
+    setTimeout(() => {   
+      this.placeService.getPlaceByFilter(this.filter).then((result: any) => {  
+            if(result){    
+              this.returnPlaceId = result; 
+              this.presentModal();
+              this.swipeEventLast();
+            console.log("result ",result);   
+            console.log("returnPlaceId ",this.returnPlaceId);   
+            }     
+        }).catch((err) => {
+          this.swipeEventLast();
+          console.log(err);
+        }); 
+    }, 700);
+ 
+}
+ 
+presentModal() {
+  this.assetService.presentToast('Çarktan gelen mekan detayı'); 
+  this.navCtrl.push("PlaceDetailPage", { placeId: this.returnPlaceId }); //, passedWorkOrder: "test"
+}
+
+swipeEventLast() { 
+  $(document).ready(function() {
+    $({ deg: 0 }).animate(
+      { deg: 1800 },
+      {
+        duration: 300,
+        step: function(now) {
+          $("#spinImg").css({
+            transform: "rotate(" + now + "deg)"
+          });
+        }
+      }
+    );
+  }); 
 }
 
   swipeEvent(event: any) {
-    debugger;
     this.getPlaceByFilter();
     $(document).ready(function() {
       $({ deg: 0 }).animate(
         { deg: 1800 },
         {
-          duration: 4000,
+          duration: 20000,
           step: function(now) {
             $("#spinImg").css({
               transform: "rotate(" + now + "deg)"
@@ -102,12 +130,12 @@ export class WheelSpinnerPage {
       );
     });
 
-    setTimeout(() => {
-      this.assetService.presentToast(
-        " Çarkı çevirdin ve bahtında xyz mekanı varmış ;) "
-      );
-    }, 3000);
-  }
+  //   setTimeout(() => {
+  //     this.assetService.presentToast(
+  //       " Çarkı çevirdin ve bahtında xyz mekanı varmış ;) "
+  //     );
+  //   }, 3000);
+   }
 }
 
 /* JUST TRIGGER ONCE ! 

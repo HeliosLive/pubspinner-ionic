@@ -35,6 +35,7 @@ export class PlaceService {
 
   getPlaceByFilter(filter:PlaceFilter){
     debugger;
+    console.log("send filter ",filter);
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append("Content-Type", "application/json");

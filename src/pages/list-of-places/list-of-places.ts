@@ -134,7 +134,7 @@ export class ListOfPlacesPage {
   }
 
   goPlaceDetail(placeId:number) {
-    this.assetService.presentToast('Mekan Detayları Yüklendi..');
+    this.assetService.presentToast('Mekan Detayları Yükleniyor..');
     let ticketCategory = "";
     this.navCtrl.push("PlaceDetailPage", { placeId: placeId }); //, passedWorkOrder: "test"
   }
