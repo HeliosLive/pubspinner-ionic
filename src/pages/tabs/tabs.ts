@@ -16,7 +16,7 @@ export class TabsPage {
   tab2Root = 'ListOfPlacesPage';
   tab3Root = 'WheelSpinnerPage';
   tab4Root = 'MapsOfPlacesPage';
-  tab5Root = 'LoginPage';
+  tab5Root = 'FuturePage';
   
   @ViewChild('myTabs') tabRef: any;
   
