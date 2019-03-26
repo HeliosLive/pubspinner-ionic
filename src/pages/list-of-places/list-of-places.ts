@@ -49,7 +49,7 @@ export class ListOfPlacesPage {
   places:PlaceList;
   placesList:PlaceList[]=[];  
   placeTypeId:number[]=[0];  
-  placeStar:number=0;
+  placeStar:number=2;
 
   ionViewDidLoad() {
     //this.getPlaces(); 

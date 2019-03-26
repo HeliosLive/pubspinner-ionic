@@ -5,13 +5,13 @@
         "Id": 1, 
         "Name": "Kafe",
         "ImageUrl": "assets/images/cafe.jpg",
-        "Count":1294
+        "Count":1763
       },
       {
         "Id": 2,
         "Name": "Bar",
         "ImageUrl": "assets/images/beerImg.jpg",
-        "Count":168
+        "Count":341
       },
       {
         "Id": 3,
@@ -23,7 +23,7 @@
         "Id": 4,
         "Name": "Müze",
         "ImageUrl": "assets/images/Museum.jpg",
-        "Count":109
+        "Count":195
       },
       {
         "Id": 5,
@@ -49,7 +49,7 @@
         "Id": 1, 
         "Name": "Kafe",
         "ImageUrl": "assets/images/mainCafe.jpeg",
-        "Description":"Bi' Kahve Molası ",
+        "Description":"Bİ' Kahve Molası ",
         "Description2":"ama Nerede ?"
       },
       {
@@ -63,15 +63,15 @@
         "Id": 3, 
         "Name": "Restorant",
         "ImageUrl": "assets/images/mainDinner.jpeg",
-        "Description":"Hoş Müzikler Eşliğinde",
-        "Description2":"Hangi Restorant'a Gitsek ?"
+        "Description":"HoŞ Müzİkler EŞLİĞİnde",
+        "Description2":"Hangİ Restorant'a Gİtsek ?"
       },
       {
         "Id": 4, 
         "Name": "Müze",
         "ImageUrl": "assets/images/mainMuseum.jpeg",
         "Description":"İstanbulda Olup ",
-        "Description2":"Müze Gezmemek Olur Mu ?"
+        "Description2":"MÜze Gezmemek Olur Mu ?"
       }
     ]
 

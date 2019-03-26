@@ -24,8 +24,8 @@
    <ion-row>
     <ion-col col-12>
       <ion-item>
-        <ion-label>Mekan Tipi</ion-label>
-        <ion-select [(ngModel)]="placeTypeId" (ngModelChange)="changeInMacro()" (ionChange)="selectPlaceType($event)" multiple="false">
+        <ion-label color="mail">Mekan Tipi</ion-label>
+        <ion-select okText="Seç" cancelText="İptal" [(ngModel)]="placeTypeId" (ngModelChange)="changeInMacro()" (ionChange)="selectPlaceType($event)" multiple="false">
           <ion-option value="0">Hepsi</ion-option> 
           <ion-option value="1">Kafe</ion-option> 
           <ion-option value="2">Bar</ion-option> 
@@ -36,10 +36,10 @@
     </ion-col>
     <ion-col col-12>
         <ion-item>
-            <ion-label style="margin-bottom: -10%;">Popülarite</ion-label> 
+            <ion-label style="margin-bottom: -10%;" color="secondary">Popülarite</ion-label> 
             <ion-range min="0" max="5" step="1" snaps="true" pin="true" color="pending" [(ngModel)]="placeStar" (ionChange)="changeInMacro()">
                 <ion-icon small range-left name="star-outline"></ion-icon>
-                <ion-icon range-right name="star"></ion-icon>
+                <ion-icon color="danger" range-right name="star"></ion-icon>
               </ion-range>
           </ion-item>
     </ion-col>
@@ -57,7 +57,7 @@
                   <ion-icon item-right name="cafe" *ngIf="item.PlaceType == 1"></ion-icon>
                   <ion-icon item-right name="beer" *ngIf="item.PlaceType == 2"></ion-icon>
                   <ion-icon item-right name="restaurant" *ngIf="item.PlaceType == 3"></ion-icon>
-                  <ion-icon item-right name="filing" *ngIf="item.PlaceType == 4"></ion-icon>
+                  <ion-icon item-right name="easel" *ngIf="item.PlaceType == 4"></ion-icon>
                 </button> 
             </ion-list-header>
             <ion-title *ngIf="IslacesList" text-center> Sonuç Yok</ion-title> 

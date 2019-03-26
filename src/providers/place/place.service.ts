@@ -49,7 +49,7 @@ export class PlaceService {
           (err) => {
             console.log(err);
             reject(err);
-            alert("Servise Ulaşılamadı");
+            // alert("Servise Ulaşılamadı");
           })
     });
   }

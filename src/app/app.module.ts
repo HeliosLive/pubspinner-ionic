@@ -1,5 +1,7 @@
+import { FormsModule } from '@angular/forms';
+import { MbscModule } from '@mobiscroll/angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar'; 
@@ -20,7 +22,9 @@ import { PlaceService } from '../providers/place/place.service';
   declarations: [
     MyApp
   ],
-  imports: [
+  imports: [ 
+    FormsModule, 
+    MbscModule,
     HttpModule,
     IonicImageViewerModule,
     BrowserModule,
@@ -43,6 +47,7 @@ import { PlaceService } from '../providers/place/place.service';
     AssetsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlaceService
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

@@ -12,6 +12,13 @@ import { PlaceService } from "../../providers/place/place.service";
 import { PlaceFilter } from "../../models/PlaceFilter";
 import { Distance } from "../../models/Distance";
 import { PlaceDetailPage } from "../place-detail/place-detail";
+import { mobiscroll, MbscSelectOptions } from '@mobiscroll/angular';
+
+mobiscroll.settings = {
+    theme: 'ios',
+    lang: 'tr'
+};
+
 
 /**
  * Generated class for the WheelSpinnerPage page.
@@ -35,6 +42,24 @@ export class WheelSpinnerPage {
   filter:PlaceFilter = new PlaceFilter();
   distance:Distance = new Distance();
   returnPlaceId:number;
+  isSpinAgain:boolean=true;
+ 
+    wheel: number = 1;
+    multiple: any = [1, 2, 9, 196, 200, 1008, 1009];
+    select: any = [3, 4];
+    group: any = [1, 2, 9, 196, 200, 1008, 1009];
+
+   selectSettings: MbscSelectOptions = {
+        select: 'multiple'
+    };
+
+    groupSettings: MbscSelectOptions = {
+        select: 'multiple',
+        label: 'Name',
+        width: 50,
+        group: true,
+        groupLabel: '&nbsp;'
+    };
 
   constructor(
     public navCtrl: NavController,
@@ -79,17 +104,21 @@ export class WheelSpinnerPage {
     setTimeout(() => {   
       this.placeService.getPlaceByFilter(this.filter).then((result: any) => {  
             if(result){    
+              this.isSpinAgain = true;
               this.returnPlaceId = result; 
               this.presentModal();
               this.swipeEventLast();
             console.log("result ",result);   
             console.log("returnPlaceId ",this.returnPlaceId);   
-            }     
+            }    
         }).catch((err) => {
+          this.assetService.presentAlert("Mekan Bulunamadı !","Üzgünüz Aradığınız Filtrelerde bir Mekan Bulunamadı ! Lütfen filtreleri düzenleyip Çarkı tekrar çeviriniz..");
+          // alert("Üzgünüz Aradığınız Filtrelerde bir Mekan Bulunamadı ! Lütfen filtreleri düzenleyip Çarkı tekrar çeviriniz..");
+          this.isSpinAgain = true;
           this.swipeEventLast();
           console.log(err);
         }); 
-    }, 700);
+    }, 3000);
  
 }
  
@@ -98,29 +127,12 @@ presentModal() {
   this.navCtrl.push("PlaceDetailPage", { placeId: this.returnPlaceId }); //, passedWorkOrder: "test"
 }
 
-swipeEventLast() { 
-  $(document).ready(function() {
-    $({ deg: 0 }).animate(
-      { deg: 1800 },
-      {
-        duration: 300,
-        step: function(now) {
-          $("#spinImg").css({
-            transform: "rotate(" + now + "deg)"
-          });
-        }
-      }
-    );
-  }); 
-}
-
-  swipeEvent(event: any) {
-    this.getPlaceByFilter();
+  swipeEventLast() { 
     $(document).ready(function() {
       $({ deg: 0 }).animate(
-        { deg: 1800 },
+        { deg: 360 },
         {
-          duration: 20000,
+          duration: 300,
           step: function(now) {
             $("#spinImg").css({
               transform: "rotate(" + now + "deg)"
@@ -128,7 +140,28 @@ swipeEventLast() {
           }
         }
       );
-    });
+    }); 
+  }
+
+  swipeEvent(event: any) {
+    if(this.isSpinAgain == true){
+        this.isSpinAgain = false;
+    this.getPlaceByFilter();
+      $(document).ready(function() {
+        $({ deg: 0 }).animate(
+          { deg: 1800 },
+          {
+            duration: 3000,
+            step: function(now) {
+              $("#spinImg").css({
+                transform: "rotate(" + now + "deg)"
+              });
+            }
+          }
+        );
+      });
+    }
+   
 
   //   setTimeout(() => {
   //     this.assetService.presentToast(
