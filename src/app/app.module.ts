@@ -11,7 +11,8 @@ import { EntryPage } from '../pages/entry/entry';
 import { EntryPageModule } from '../pages/entry/entry.module';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { Geolocation } from '@ionic-native/geolocation';
-import { AgmCoreModule } from '../../node_modules/@agm/core'; 
+import { AgmCoreModule } from '@agm/core'; 
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 // import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { Storage, IonicStorageModule } from '@ionic/storage';
@@ -54,7 +55,8 @@ import { PlaceService } from '../providers/place/place.service';
     AssetsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlaceService,
-    Geolocation
+    Geolocation,
+    LaunchNavigator
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

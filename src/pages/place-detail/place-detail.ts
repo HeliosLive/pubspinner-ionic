@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ImageViewerController } from 'ionic-img-viewer';
 import { PlaceService } from '../../providers/place/place.service';
 import { PlaceDetail } from '../../models/PlaceDetail';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 
 /**
  * Generated class for the PlaceDetailPage page.
@@ -33,6 +34,7 @@ export class PlaceDetailPage {
      public navParams: NavParams,
      imageViewerCtrl: ImageViewerController,
      private placeService : PlaceService,
+     private launchNavigator:LaunchNavigator,
     @Inject("apiUrl") private apiUrl)
      {
       this._imageViewerCtrl = imageViewerCtrl;
@@ -96,6 +98,16 @@ export class PlaceDetailPage {
 
   goPlaceLocation(){
     console.log("go location ", "hangi harita ile açılsın ?");
+    let options: LaunchNavigatorOptions = {
+      // app: this.launchNavigator.APP.GOOGLE_MAPS,
+               start:[this.placeDetailModel.latitude,this.placeDetailModel.longitude]
+        };
+    this.launchNavigator.navigate('London, ON',options)
+    .then(success =>{
+      console.log(success);
+    },error=>{
+      console.log(error);
+    })
   }
 
 }
