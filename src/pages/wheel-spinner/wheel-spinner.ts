@@ -13,6 +13,7 @@ import { PlaceFilter } from "../../models/PlaceFilter";
 import { Distance } from "../../models/Distance";
 import { PlaceDetailPage } from "../place-detail/place-detail";
 import { mobiscroll, MbscSelectOptions } from '@mobiscroll/angular';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 mobiscroll.settings = {
     theme: 'ios',
@@ -43,6 +44,8 @@ export class WheelSpinnerPage {
   distance:Distance = new Distance();
   returnPlaceId:number;
   isSpinAgain:boolean=true;
+  localLat : any;
+  localLng : any;
  
     wheel: number = 1;
     multiple: any = [1, 2, 9, 196, 200, 1008, 1009];
@@ -64,6 +67,7 @@ export class WheelSpinnerPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public geolocation: Geolocation,
     public menu: MenuController,
     public assetService: AssetsProvider,
     private placeService: PlaceService,
@@ -72,6 +76,7 @@ export class WheelSpinnerPage {
 
   ionViewDidLoad() {
     this.getDistricts(); 
+    this.getMapPosition();
     console.log("ionViewDidLoad WheelSpinnerPage");
   }
 
@@ -81,6 +86,33 @@ export class WheelSpinnerPage {
     });
   }
 
+  getMapPosition(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+     
+     const subscription = this.geolocation.watchPosition().subscribe((data) => {
+
+      this.localLat = data.coords.latitude ;
+      this.localLng = data.coords.longitude;
+
+      console.log('coords : ', data.coords); 
+      console.log('coords lat : ', data.coords.latitude); 
+      console.log('coords long : ', data.coords.longitude); 
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude
+     });
+
+     //sürekli koordinat bilgisini çekmesin..
+    setTimeout(() => {   
+     subscription.unsubscribe();
+    }, 10000);
+
+  }
   getDistricts(){ 
       this.placeService.getDistricts(1).then((result: any) => {  // cityId şimdilik istanbul 
             if(result){    
@@ -96,8 +128,8 @@ export class WheelSpinnerPage {
     this.filter.cities = 1; // cityId şimdilik istanbul 
     this.filter.districts = this.districtId;
     this.filter.placeStar = this.placeStar;
-    this.filter.distances.Latitude = 40.9731761; // buraya geolocation infos gelcek
-    this.filter.distances.Longitude = 28.7257059; // buraya geolocation infos gelcek
+    this.filter.distances.Latitude = this.localLat;  
+    this.filter.distances.Longitude = this.localLng;  
     this.filter.distances.MaxDistance = this.placeDistance;
     this.filter.placeTypes = this.placeTypeId;
  

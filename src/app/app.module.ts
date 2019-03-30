@@ -10,6 +10,7 @@ import { MyApp } from './app.component';
 import { EntryPage } from '../pages/entry/entry';
 import { EntryPageModule } from '../pages/entry/entry.module';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -46,7 +47,8 @@ import { PlaceService } from '../providers/place/place.service';
     SplashScreen,
     AssetsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PlaceService
+    PlaceService,
+    Geolocation
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

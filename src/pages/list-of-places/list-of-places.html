@@ -60,7 +60,8 @@
                   <ion-icon item-right name="easel" *ngIf="item.PlaceType == 4"></ion-icon>
                 </button> 
             </ion-list-header>
-            <ion-title *ngIf="IslacesList" text-center> Sonuç Yok</ion-title> 
+            <ion-title *ngIf="IslacesList" text-center> Daha Fazla Sonuç Bulunamadı</ion-title> 
+            <ion-title *ngIf="IslacesList && placesList" text-center> Sonuç Yok</ion-title> 
           </ion-list>
     </div>   
     <ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)" >
