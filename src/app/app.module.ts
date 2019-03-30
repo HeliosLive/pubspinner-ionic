@@ -11,6 +11,8 @@ import { EntryPage } from '../pages/entry/entry';
 import { EntryPageModule } from '../pages/entry/entry.module';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AgmCoreModule } from '../../node_modules/@agm/core'; 
+// import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -32,7 +34,11 @@ import { PlaceService } from '../providers/place/place.service';
     EntryPageModule, 
     TabsPageModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    // AgmSnazzyInfoWindowModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyDJMobQnwX5yhSEkcHr-cK28azPTqo84X8" //TO DO projede paralı alınmış api olmalı bu 100 gösterimlik..
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

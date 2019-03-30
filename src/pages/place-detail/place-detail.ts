@@ -24,6 +24,9 @@ export class PlaceDetailPage {
   passedPlaceId;
   _imageViewerCtrl: ImageViewerController;
   placeImages:string[] = [] 
+  startLat: number;
+  startLong: number;
+  agmIcon: any;
 
   constructor(
     public navCtrl: NavController,
@@ -38,6 +41,12 @@ export class PlaceDetailPage {
 
   ionViewDidLoad() {
     this.loadPlace();
+  }
+
+  location() {
+    this.startLat = this.placeDetailModel.latitude;
+    this.startLong = this.placeDetailModel.longitude;
+    // this.agmIcon = "assets/images/beer.png"; 
   }
 
   changeLike(){
@@ -66,6 +75,10 @@ export class PlaceDetailPage {
               console.log(this.openingHours);
               this.placeOpenHourReplace();
            }
+           if (this.placeDetailModel.latitude != null ) {
+            this.location();
+            console.log("harita yüklendi"); 
+         }
           console.log("placeDetailModel ",this.placeDetailModel);  
           }     
       }).catch((err) => {
@@ -79,6 +92,10 @@ export class PlaceDetailPage {
  
     // setTimeout(() => imageViewer.dismiss(), 1000);
     // imageViewer.onDidDismiss(() => alert('Viewer dismissed'));
+  }
+
+  goPlaceLocation(){
+    console.log("go location ", "hangi harita ile açılsın ?");
   }
 
 }
