@@ -46,7 +46,7 @@
             <ion-item >
                 <button ion-button color="favorite" block *ngIf="placeDetailModel.website" class="lowercase"> {{placeDetailModel.website}} 
                   </button> 
-                <button ion-button color="favorite" block> {{placeDetailModel.google_phone_number}} 
+                <button ion-button color="favorite" block *ngIf="placeDetailModel.google_phone_number"> {{placeDetailModel.google_phone_number}} 
                   </button> 
                 <button ion-button color="favorite" block > 
                   <span class="capitalize">{{placeDetailModel.district.name}} </span> /  
@@ -126,7 +126,7 @@
             Yorumlar
           </ion-card-header> 
           <ion-card-content>
-              <ion-slides *ngIf="placeDetailModel.placeReviews" pager loop="true" style="height:100%;" effect="slide" paginationType="fraction">
+              <ion-slides *ngIf="placeDetailModel.placeReviews" pager="true" loop="true" style="height:100%;" effect="slide" paginationType="progressbar">  <!--fraction-->
                   <ion-slide *ngFor="let item of placeDetailModel.placeReviews">
                    <div class="slide-content capitalize">  
                       <button ion-button color="favorite" style="height:auto" outline> 

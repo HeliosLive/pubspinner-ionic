@@ -92,7 +92,7 @@ export class ListOfPlacesPage {
                 Rating: item.google_rating
               }
           this.placesList.push(place);
-          console.log("placeList",this.placesList);
+          // console.log("placeList",this.placesList);
           // console.log(place);
           }            
         });  

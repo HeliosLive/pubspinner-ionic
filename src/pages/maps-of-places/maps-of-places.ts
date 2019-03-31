@@ -61,8 +61,9 @@ export class MapsOfPlacesPage {
       // resp.coords.latitude
       // resp.coords.longitude
      }).catch((error) => { 
+      this.assetService.loadingDismiss();
+      this.assetService.presentAlert("Konum Erişimi","Harita özelliğini kullanabilmek için lütfen konum servislerini açınız..");
        console.log('Error getting location', error);
-       return;
      });
      
      const subscription = this.geolocation.watchPosition().subscribe((data) => {
