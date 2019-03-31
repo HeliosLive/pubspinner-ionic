@@ -60,8 +60,9 @@ export class MapsOfPlacesPage {
     this.geolocation.getCurrentPosition().then((resp) => {
       // resp.coords.latitude
       // resp.coords.longitude
-     }).catch((error) => {
+     }).catch((error) => { 
        console.log('Error getting location', error);
+       return;
      });
      
      const subscription = this.geolocation.watchPosition().subscribe((data) => {
@@ -126,9 +127,12 @@ export class MapsOfPlacesPage {
     console.log("go location ", "hangi harita ile açılsın ?");
     let options: LaunchNavigatorOptions = {
       // app: this.launchNavigator.APP.GOOGLE_MAPS,
-               start:[lat,lng]
+               start:[this.distance.Latitude,this.distance.Longitude]
         };
-    this.launchNavigator.navigate(name,options)
+    this.launchNavigator.navigate([lat, lng],options)
+    // this.launchNavigator.navigate([50.279306, -5.163158], {
+    //   start: "50.342847, -4.749904"
+    //  })
     .then(success =>{
       console.log(success);
     },error=>{

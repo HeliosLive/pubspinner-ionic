@@ -4,6 +4,7 @@ import { ImageViewerController } from 'ionic-img-viewer';
 import { PlaceService } from '../../providers/place/place.service';
 import { PlaceDetail } from '../../models/PlaceDetail';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the PlaceDetailPage page.
@@ -25,8 +26,8 @@ export class PlaceDetailPage {
   passedPlaceId;
   _imageViewerCtrl: ImageViewerController;
   placeImages:string[] = [] 
-  startLat: number;
-  startLong: number;
+  startLat: number=0;
+  startLong: number=0;
   agmIcon: any;
 
   constructor(
@@ -35,6 +36,7 @@ export class PlaceDetailPage {
      imageViewerCtrl: ImageViewerController,
      private placeService : PlaceService,
      private launchNavigator:LaunchNavigator,
+     public geolocation: Geolocation,
     @Inject("apiUrl") private apiUrl)
      {
       this._imageViewerCtrl = imageViewerCtrl;
@@ -42,15 +44,40 @@ export class PlaceDetailPage {
      }
 
   ionViewDidLoad() {
+    this.getMapPosition();
     this.loadPlace();
   }
 
-  location() {
-    this.startLat = this.placeDetailModel.latitude;
-    this.startLong = this.placeDetailModel.longitude;
-    // this.agmIcon = "assets/images/beer.png"; 
-  }
+    
+  getMapPosition(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+     }).catch((error) => { 
+       console.log('Error getting location', error);
+       return;
+     });
+     
+     const subscription = this.geolocation.watchPosition().subscribe((data) => {
 
+      this.startLat = data.coords.latitude;
+      this.startLong = data.coords.longitude;
+
+      console.log('coords : ', data.coords); 
+      console.log('coords lat : ', data.coords.latitude); 
+      console.log('coords long : ', data.coords.longitude); 
+      // data can be a set of coordinates, or an error (if an error occurred).
+      // data.coords.latitude
+      // data.coords.longitude  
+     });
+
+     //sürekli koordinat bilgisini çekmesin..
+    setTimeout(() => {   
+     subscription.unsubscribe();
+    }, 10000);
+
+  }
+ 
   changeLike(){
     this.isLiked = (this.isLiked == false ) ? true : false;
   }
@@ -77,8 +104,7 @@ export class PlaceDetailPage {
               console.log(this.openingHours);
               this.placeOpenHourReplace();
            }
-           if (this.placeDetailModel.latitude != null ) {
-            this.location();
+           if (this.placeDetailModel.latitude != null ) { 
             console.log("harita yüklendi"); 
          }
           console.log("placeDetailModel ",this.placeDetailModel);  
@@ -100,9 +126,9 @@ export class PlaceDetailPage {
     console.log("go location ", "hangi harita ile açılsın ?");
     let options: LaunchNavigatorOptions = {
       // app: this.launchNavigator.APP.GOOGLE_MAPS,
-               start:[this.placeDetailModel.latitude,this.placeDetailModel.longitude]
+               start:[this.startLat,this.startLong]
         };
-    this.launchNavigator.navigate(this.placeDetailModel.name,options)
+    this.launchNavigator.navigate([this.placeDetailModel.latitude, this.placeDetailModel.longitude],options)
     .then(success =>{
       console.log(success);
     },error=>{
