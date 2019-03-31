@@ -5,6 +5,7 @@ import { PlaceDetail } from "../../models/PlaceDetail";
 import { PlaceList } from "../../models/PlaceList";
 import { Http, Headers, RequestOptions } from "@angular/http";
 import { PlaceFilter } from "../../models/PlaceFilter";
+import { Distance } from "../../models/Distance";
 
 @Injectable()
 export class PlaceService {
@@ -79,6 +80,25 @@ export class PlaceService {
         .subscribe(res => {
           resolve(res.json());
           // console.log("gelen datalar",res.json());
+        },
+          (err) => {
+            console.log(err);
+            reject(err);
+            alert("Servise Ulaşılamadı");
+          })
+    });
+  }
+
+  getPlacesMapFilter(distance:Distance) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append("Content-Type", "application/json"); 
+      headers.append("Accept", "application/json");
+      this.http.post( this.url + '/PlacesMapFilter' , distance , { headers: headers }) 
+      // this.http.post('https://localhost:44309/api/overall/PlacesMapFilter' , distance , { headers: headers }) 
+        .subscribe(res => {
+          resolve(res.json());
+          console.log("gelen Harita datalar",res.json()); 
         },
           (err) => {
             console.log(err);

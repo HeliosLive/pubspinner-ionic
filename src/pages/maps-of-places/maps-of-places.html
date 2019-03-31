@@ -21,5 +21,23 @@
 
 
 <ion-content padding>
-<img style="margin-top:30%;" src="assets/images/mapunderconstruction.png">
+<!-- <img style="margin-top:30%;" src="assets/images/mapunderconstruction.png"> -->
+<agm-map [zoom]="14" [latitude]="localLat" [longitude]="localLng">
+  <agm-marker *ngFor="let item of placesList"  (markerClick)="clickedMarker(infowindow)"
+                 [latitude]="item.latitude" [longitude]="item.longitude" [markerClickable]="true">   <!-- [iconUrl]="agmIcon" ilerideee !! -->
+    <agm-info-window #infowindow>
+      <span style="font-weight: 500;"> Mekan Adı </span> : <br>  {{item.name}} <br>  
+      <span style="font-weight: 500;"> Mekan Tipi </span> : <br>  {{item.placeTypeName}} <br>  
+      <span style="font-weight: 500;"> Tel No </span> : <br>  {{item.google_phone_number}} <br>  
+      <span style="font-weight: 500;"> Popülarite </span> : <br>  {{item.google_rating}} 
+                  <ion-icon color="danger" range-right name="star"></ion-icon><br>  
+          <button small ion-button color="head" (click)="goPlaceDetail(item.id)"> 
+            <span class="capitalize"> Detaylar <ion-icon small name="information-circle-outline"></ion-icon> </span>
+            </button>  <br>
+      <button small ion-button color="head" (click)="goPlaceLocation(item.latitude,item.longitude,item.name)"> 
+        <span class="capitalize"> Mekana Git <ion-icon name="car"></ion-icon> </span>
+        </button>  
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
 </ion-content>
