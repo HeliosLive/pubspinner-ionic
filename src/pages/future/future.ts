@@ -16,10 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FuturePage {
 
   futureList:string[]=
-  ['Harita ile yakınınızdaki mekanları görebileceksiniz.',
-   'Mekan detayında konum özelliği ile telefonunuzdaki herhangi bir harita uygulaması ile oraya yönlendirme.',
+  [ 
    'Mekanların Müzik,Menü bilgisi özellikleri ilave edilecek.',
-   'Wheel Spinner` a ilave filtreler.',
+   'Çark ekranına ilave filtreler.',
    'Üye olma ve giriş yapma özellikleriyle istediğiniz mekanları favorilere ekleyebilme',
    'Mekan tipi çeşitlerinin arttırılması.'];
 

@@ -102,7 +102,7 @@ export class PlaceDetailPage {
       // app: this.launchNavigator.APP.GOOGLE_MAPS,
                start:[this.placeDetailModel.latitude,this.placeDetailModel.longitude]
         };
-    this.launchNavigator.navigate('London, ON',options)
+    this.launchNavigator.navigate(this.placeDetailModel.name,options)
     .then(success =>{
       console.log(success);
     },error=>{
