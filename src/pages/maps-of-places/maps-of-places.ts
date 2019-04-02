@@ -41,7 +41,7 @@ export class MapsOfPlacesPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapsOfPlacesPage');
     this.getMapPosition();
-    this.assetService.loadingShow("25km yakındaki tüm mekanlar yükleniyor.."); 
+    this.assetService.loadingShow("Yakınınızdaki tüm mekanlar yükleniyor.."); 
   }
  
   clickedMarker(infowindow) {
@@ -50,6 +50,27 @@ export class MapsOfPlacesPage {
     }
     this.previous = infowindow;
  }
+
+  centerChange(event: any) {
+    // console.log(event);
+    // console.log(event.lat);
+    // console.log(event.lng);
+    // console.log("this.localLat ",this.localLat); 
+      if ((this.localLat > event.lat + 0.01 || this.localLat < event.lat - 0.01 ) && (this.localLng > event.lng + 0.01 || this.localLng < event.lng - 0.01 )) {
+          // if (this.localLat > event.lat + 0.01 || this.localLat < event.lat - 0.01 ) {
+          //   if (this.localLng > event.lng + 0.01 || this.localLng < event.lng - 0.01 ) {
+          this.localLat = event.lat;
+          this.localLng = event.lng; 
+          // this.assetService.loadingShow("Yükleniyor.."); 
+          this.PlacesMapFilter(event.lat, event.lng);
+      }
+      else if(this.localLat.toString().substring(0, 6) == event.lat.toString().substring(0, 6) && this.localLng.toString().substring(0, 6) == event.lng.toString().substring(0, 6)){ 
+        this.PlacesMapFilter(event.lat, event.lng);
+      }
+      else{ 
+        this.assetService.loadingDismiss();
+      }
+  }
 
   goPlaceDetail(placeId:number) {
     this.assetService.presentToast('Mekan Detayları Yükleniyor..'); 
@@ -73,14 +94,12 @@ export class MapsOfPlacesPage {
 
       console.log('coords : ', data.coords); 
       console.log('coords lat : ', data.coords.latitude); 
-      console.log('coords long : ', data.coords.longitude); 
-      // data can be a set of coordinates, or an error (if an error occurred).
-      // data.coords.latitude
-      // data.coords.longitude 
+      console.log('coords long : ', data.coords.longitude);  
+      
       setTimeout(() => {   
-        this.PlacesMapFilter(data.coords.latitude,data.coords.longitude);
+        // this.PlacesMapFilter(data.coords.latitude,data.coords.longitude);
        }, 1000);
-     });
+     }); 
 
      //sürekli koordinat bilgisini çekmesin..
     setTimeout(() => {   
@@ -92,28 +111,16 @@ export class MapsOfPlacesPage {
   PlacesMapFilter(lat:number,lng:number){   
     this.distance.Latitude = lat;
     this.distance.Longitude = lng;
-    this.distance.MaxDistance = 0.09;   
+    this.distance.MaxDistance = 0.01;   
+
+    this.assetService.loadingDismiss();
+    this.assetService.loadingShow("Yükleniyor.."); 
 
     setTimeout(() => {   
     this.placeService.getPlacesMapFilter(this.distance).then((result: any) => { 
       if(result){
       console.log("iletilen data", result);
-      this.placesList = result;
-        // result.forEach(item => {
-        //   if(item.Id){
-        //     let place = new MapPlaceDetail();
-        //     place = <MapPlaceDetail>{
-        //         Id: item.Id,
-        //         Name: item.Name,
-        //         placeTypeName: item.placeTypeName,
-        //         latitude: item.Latitude,
-        //         longitude: item.Longitude,
-        //         google_phone_number: item.google_phone_number,
-        //         google_rating: item.google_rating
-        //       }
-        //   this.placesList.push(place); 
-        //   }                       
-        // }); 
+      this.placesList = result; 
         console.log(" this.placesList", this.placesList);
         this.assetService.loadingDismiss();
       }

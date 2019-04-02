@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ImageViewerController } from 'ionic-img-viewer';
 import { PlaceService } from '../../providers/place/place.service';
 import { PlaceDetail } from '../../models/PlaceDetail';
-import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { LaunchNavigator, LaunchNavigatorOptions, PromptsOptions } from '@ionic-native/launch-navigator';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 /**
@@ -128,6 +128,12 @@ export class PlaceDetailPage {
       // app: this.launchNavigator.APP.GOOGLE_MAPS,
                start:[this.startLat,this.startLong]
         };
+    let prompt :  PromptsOptions ={
+          headerText:"",
+          bodyText:"",
+          yesButtonText:"",
+          noButtonText:""
+        } 
     this.launchNavigator.navigate([this.placeDetailModel.latitude, this.placeDetailModel.longitude],options)
     .then(success =>{
       console.log(success);

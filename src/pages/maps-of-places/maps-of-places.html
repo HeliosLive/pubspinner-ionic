@@ -22,7 +22,7 @@
 
 <ion-content padding>
 <!-- <img style="margin-top:30%;" src="assets/images/mapunderconstruction.png"> -->
-<agm-map [zoom]="14" [latitude]="localLat" [longitude]="localLng">
+<agm-map [zoom]="14" [latitude]="localLat" [longitude]="localLng" (centerChange)="centerChange($event)">
   <agm-marker *ngFor="let item of placesList"  (markerClick)="clickedMarker(infowindow)"
                  [latitude]="item.latitude" [longitude]="item.longitude" [markerClickable]="true">   <!-- [iconUrl]="agmIcon" ilerideee !! -->
     <agm-info-window #infowindow>
