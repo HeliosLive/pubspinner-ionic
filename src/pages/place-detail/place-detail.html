@@ -25,6 +25,9 @@
         </div>
       </ion-slide>
     </ion-slides> 
+
+    <!-- <ion-label *ngIf="!placeDetailModel.photos"> Fotoğraf Bulunamadı</ion-label> -->
+
     <ion-item >
         <button ion-button icon-only item-left *ngIf="placeDetailModel.placeType">  
             <ion-icon name="cafe" *ngIf="placeDetailModel.placeType.id == 1"> {{placeDetailModel.placeType.name}}</ion-icon>

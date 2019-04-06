@@ -21,10 +21,28 @@
 
 
 <ion-content padding>
+
+  <!-- FiLTER -->
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-label color="mail">Mekan Tipi</ion-label>
+          <ion-select okText="Seç" cancelText="İptal" [(ngModel)]="placeTypeId" (ngModelChange)="changeInPlaceType()" multiple="false">
+            <ion-option value="0">Hepsi</ion-option>
+            <ion-option value="1">Kafe</ion-option>
+            <ion-option value="2">Bar</ion-option>
+            <ion-option value="3">Restorant</ion-option>
+            <ion-option value="4">Müze</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+ 
 <!-- <img style="margin-top:30%;" src="assets/images/mapunderconstruction.png"> -->
-<agm-map [zoom]="14" [latitude]="localLat" [longitude]="localLng" (centerChange)="centerChange($event)">
+<agm-map [zoom]="15" [streetViewControl]="false" [zoomControl]="false" [minZoom]="12" 
+         [latitude]="localLat" [longitude]="localLng" (centerChange)="centerChange($event)"> <!-- (dragend)="centerChange($event)"-->
   <agm-marker *ngFor="let item of placesList"  (markerClick)="clickedMarker(infowindow)"
-                 [latitude]="item.latitude" [longitude]="item.longitude" [markerClickable]="true">   <!-- [iconUrl]="agmIcon" ilerideee !! -->
+                 [latitude]="item.latitude" [longitude]="item.longitude" [markerClickable]="true"> <!-- [iconUrl]="agmIcon" ilerideee !! -->
     <agm-info-window #infowindow>
       <span style="font-weight: 500;"> Mekan Adı </span> : <br>  {{item.name}} <br>  
       <span style="font-weight: 500;"> Mekan Tipi </span> : <br>  {{item.placeTypeName}} <br>  

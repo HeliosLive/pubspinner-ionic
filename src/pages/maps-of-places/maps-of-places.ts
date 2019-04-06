@@ -27,6 +27,7 @@ export class MapsOfPlacesPage {
   placesList:MapPlaceDetail[]=[];  
   distance:Distance=new Distance();
   previous;
+  placeTypeId:number=0;
 
   constructor(
     public navCtrl: NavController,
@@ -43,13 +44,17 @@ export class MapsOfPlacesPage {
     this.getMapPosition();
     this.assetService.loadingShow("Yakınınızdaki tüm mekanlar yükleniyor.."); 
   }
- 
+
   clickedMarker(infowindow) {
     if (this.previous) {
-        this.previous.close();
+      this.previous.close();
     }
     this.previous = infowindow;
- }
+  }
+
+  changeInPlaceType(){
+    this.PlacesMapFilter(this.localLat, this.localLng);
+  }
 
   centerChange(event: any) {
     // console.log(event);
@@ -111,7 +116,8 @@ export class MapsOfPlacesPage {
   PlacesMapFilter(lat:number,lng:number){   
     this.distance.Latitude = lat;
     this.distance.Longitude = lng;
-    this.distance.MaxDistance = 0.01;   
+    this.distance.MaxDistance = 0.06;   
+    this.distance.placeTypeId = this.placeTypeId;   
 
     this.assetService.loadingDismiss();
     this.assetService.loadingShow("Yükleniyor.."); 
@@ -128,7 +134,7 @@ export class MapsOfPlacesPage {
         this.assetService.loadingDismiss();
         console.log(err);
       });
-    }, 1000);
+    }, 400);
   }
 
   goPlaceLocation(lat:number,lng:number,name:string){
